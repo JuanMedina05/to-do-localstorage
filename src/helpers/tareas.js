@@ -52,7 +52,16 @@ export function saveTareas(arrayTareas=[]){
     }
 }
 
-const getTareas=()=>{}
+const getTareas=()=>{
+    //traer data
+    const dataSinParsear = localStorage.getItem(TEXT_KEY);
+    const dataParseada = safeJSONParse(dataSinParsear);
+    if(!Array.isArray(dataParseada)){
+        console.Error("Error en la data");
+        return [];
+    }
+    return dataParseada;
+}
 
 
 export const addTarea = (nombreTarea) => {
